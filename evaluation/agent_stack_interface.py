@@ -138,6 +138,10 @@ class AgentStackInterface:
             if 'result' in result:
                 result_data = result['result']
 
+                # Extract response_text if available (our new format)
+                if 'response_text' in result_data:
+                    return result_data['response_text']
+
                 # Get the last message (agent's final response)
                 if 'messages' in result_data and result_data['messages']:
                     messages = result_data['messages']

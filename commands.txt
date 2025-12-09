@@ -23,4 +23,5 @@ curl -X POST "http://localhost:7000/u/bob/chat?session_id=s1"   -H "Content-Type
 
 curl -X POST "http://localhost:7000/u/bob/chat?session_id=s1"   -H "Content-Type: application/json"   -d '{"message":"Based on the food I like, tell me what should I eat today"}'
 
+curl -X POST "http://localhost:7000/u/bob/chat?session_id=s1"   -H "Content-Type: application/json"   -d '{"message":"Use reddit search tool to search LifeinEurope"}'
 
