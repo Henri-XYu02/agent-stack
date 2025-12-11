@@ -5,13 +5,13 @@ import requests
 import json
 
 # Test the agent API
-url = "http://localhost:7000/u/test_debug/chat"
-params = {
-    "user_id": "test_debug",
-    "session_id": "debug_session"
-}
+url = "http://localhost:7000/u/test_debug/chat?session_id=debug_session"
+# params = {
+#     "user_id": "test_debug",
+#     "session_id": "debug_session"
+# }
 data = {
-    "message": "Calculate 2 + 2 * 3"
+    "message": "Use given calculator tool to calculate 50 * 59 / 32 + 14"
 }
 
 print("=" * 80)
@@ -19,7 +19,7 @@ print("Testing Agent API Response Format")
 print("=" * 80)
 
 try:
-    response = requests.post(url, params=params, json=data, timeout=60)
+    response = requests.post(url, params={}, json=data, timeout=60)
     response.raise_for_status()
 
     result = response.json()
@@ -31,7 +31,7 @@ try:
     print(f"   Keys: {list(result.keys())}")
 
     if 'result' in result:
-        result_data = result['result']
+        result_data = result['result']['raw_response'] if 'raw_response' in result['result'] else result['result']
         print(f"   result keys: {list(result_data.keys())}")
 
         if 'response_text' in result_data:

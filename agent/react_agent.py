@@ -119,8 +119,8 @@ class LangGraphReActAgent:
         """
         self.use_memory = use_memory
         # self.model = ChatBedrockConverse(model_id=BEDROCK_MODEL_ID, region_name=BEDROCK_REGION)
-        self.model = BedRockChatModel()
-        # self.model = ChatOpenAI(model_name="gpt-3.5-turbo-0125")
+        # self.model = BedRockChatModel()
+        self.model = ChatOpenAI(model_name="gpt-3.5-turbo-0125")
         
         # Define tools list
         self.tools = [
@@ -328,7 +328,7 @@ class LangGraphReActAgent:
             return {
                 "response_text": final_text,
                 "reasoning": reasoning_part,
-                # "raw_response": response
+                "raw_response": response
             }
 
         except Exception as e:
